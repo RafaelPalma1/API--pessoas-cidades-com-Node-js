@@ -1,0 +1,20 @@
+{
+  "name": "api-rest-node-typescript",
+  "version": "1.0.0",
+  "description": "curso de api com node e typescript",
+  "author": "Rafael Palma",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}
