@@ -1,34 +1,30 @@
-/* eslint-disable no-useless-assignment */
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import type { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
 
+import { validation } from "../../shared/middleware";
+
+
 interface ICidade {
-    nome: string
+  nome: string;
+  estado: string;
 }
+interface IFilter {
+  filter?: string;
+}
+export const createValidation = validation((getSchema) => ({
+  body: getSchema<ICidade>(yup.object().shape({
+    nome: yup.string().required().min(3),
+    estado: yup.string().required().min(3),
+  })),
+  query: getSchema<IFilter>(yup.object().shape({
+    filter: yup.string().required().min(3),
+  })),
+}));
 
-const bodyValidation: yup.ObjectSchema<ICidade> = yup.object({
-    nome: yup.string().defined().min(3),
-});
+export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
+  console.log(req.body);
 
-export const create = async (req: Request<{}, {}, ICidade>, res: Response) => { 
-    let validateData: ICidade | undefined = undefined;
 
-    try{
-        validateData = await bodyValidation.validate(req.body);
-    }catch (error){
-        const yupError = error as yup.ValidationError;
-
-        return res.status(StatusCodes.BAD_REQUEST).json({
-            errors: {
-                default: yupError.message,
-            }
-        });
-    }
-
-    console.log(validateData);
-    return res.status(StatusCodes.CREATED).send("Created");
-
+  return res.send("Create!");
 };
-

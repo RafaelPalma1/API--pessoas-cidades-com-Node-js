@@ -9,9 +9,9 @@ router.get("/", (req, res) => {
     return res.status(StatusCodes.CREATED).json("hello world");
 });
 
-router.post("/cidades", CidadesController.create);
 
-router.get("/cidades", CidadesController.read);
+router.post("/cidades", CidadesController.createValidation, CidadesController.create);
+
 
 router.put("/cidades", CidadesController.update);
 
