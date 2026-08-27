@@ -36,6 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.create = exports.createValidation = void 0;
 const yup = __importStar(require("yup"));
 const middleware_1 = require("../../shared/middleware");
+const http_status_codes_1 = require("http-status-codes");
 exports.createValidation = (0, middleware_1.validation)((getSchema) => ({
     body: getSchema(yup.object().shape({
         nome: yup.string().required().min(3),
@@ -44,6 +45,6 @@ exports.createValidation = (0, middleware_1.validation)((getSchema) => ({
 }));
 const create = async (req, res) => {
     console.log(req.body);
-    return res.status(201).send("Create!");
+    return res.status(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR).send("Not implemented yet");
 };
 exports.create = create;

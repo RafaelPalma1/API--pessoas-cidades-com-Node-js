@@ -1,12 +1,17 @@
 import * as create from "./create";
-import * as read from "./read";
-import * as update from "./update";
-import * as delet from "./delete";
+import* as getAll from "./getAll";
+import * as getById from "./getById";
+import * as updateById from "./updateById";
+import * as deleteById from "./deleteById";
+
 
 export const CidadesController = {
     ...create,
-    ...read,
-    ...update,
-    ...delet,
+    ...getAll,
+    ...getById,
+    ...updateById,
+    ...deleteById,
 };
+
+
 

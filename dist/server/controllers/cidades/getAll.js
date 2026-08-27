@@ -33,16 +33,19 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CidadesController = void 0;
-const create = __importStar(require("./create"));
-const getAll = __importStar(require("./getAll"));
-const getById = __importStar(require("./getById"));
-const updateById = __importStar(require("./updateById"));
-const deleteById = __importStar(require("./deleteById"));
-exports.CidadesController = {
-    ...create,
-    ...getAll,
-    ...getById,
-    ...updateById,
-    ...deleteById,
+exports.getAll = exports.getAllValidation = void 0;
+const yup = __importStar(require("yup"));
+const middleware_1 = require("../../shared/middleware");
+const http_status_codes_1 = require("http-status-codes");
+exports.getAllValidation = (0, middleware_1.validation)((getSchema) => ({
+    query: getSchema(yup.object().shape({
+        page: yup.number().optional().moreThan(0),
+        limit: yup.number().optional().moreThan(0),
+        filter: yup.string().optional()
+    })),
+}));
+const getAll = async (req, res) => {
+    console.log(req.query);
+    return res.status(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR).send("Not implemented yet");
 };
+exports.getAll = getAll;

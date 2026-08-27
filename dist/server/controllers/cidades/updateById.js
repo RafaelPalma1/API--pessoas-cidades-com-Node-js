@@ -33,16 +33,21 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CidadesController = void 0;
-const create = __importStar(require("./create"));
-const getAll = __importStar(require("./getAll"));
-const getById = __importStar(require("./getById"));
-const updateById = __importStar(require("./updateById"));
-const deleteById = __importStar(require("./deleteById"));
-exports.CidadesController = {
-    ...create,
-    ...getAll,
-    ...getById,
-    ...updateById,
-    ...deleteById,
+exports.updateById = exports.updateByIdValidation = void 0;
+const yup = __importStar(require("yup"));
+const middleware_1 = require("../../shared/middleware");
+const http_status_codes_1 = require("http-status-codes");
+exports.updateByIdValidation = (0, middleware_1.validation)((getSchema) => ({
+    params: getSchema(yup.object().shape({
+        id: yup.number().integer().required().moreThan(0)
+    })),
+    body: getSchema(yup.object().shape({
+        nome: yup.string().required().min(3).max(100),
+    }))
+}));
+const updateById = async (req, res) => {
+    console.log(req.params);
+    console.log(req.body);
+    return res.status(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR).send("Not implemented yet");
 };
+exports.updateById = updateById;
