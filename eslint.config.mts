@@ -16,6 +16,6 @@ export default defineConfig([
       eqeqeq: ["error", "always"],
       "@typescript-eslint/consistent-type-imports": "error",
     },
-    ignores: ["dist/**", "node_modules/**"],
+    ignores: ["build/**", "dist/**", "node_modules/**"],
   },
 ]);
