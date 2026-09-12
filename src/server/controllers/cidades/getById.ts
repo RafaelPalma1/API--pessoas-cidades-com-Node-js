@@ -17,8 +17,17 @@ export const getByIdValidation = validation((getSchema) => ({
 }));
 
 export const getById = async (req: Request<IParamsProps>, res: Response) => {
+
+  res.setHeader("x-total-count", 1);
+  res.setHeader("Access-Control-Expose-Headers", "x-total-count");
+
+  if (Number(req.params.id) === 99999) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: "Registro não encontrado" });
+  }
+
+
   console.log(req.params);
 
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Not implemented yet");
+  return res.status(StatusCodes.OK).send("Not implemented yet");
 };

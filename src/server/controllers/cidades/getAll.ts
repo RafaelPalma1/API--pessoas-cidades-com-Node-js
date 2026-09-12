@@ -22,8 +22,23 @@ export const getAllValidation = validation((getSchema) => ({
 }));
 
 export const getAll = async (req: Request<{}, {}, {}, IqueryProps>, res: Response) => {
+
+  res.setHeader("x-total-count", 1);
+  res.setHeader("Access-Control-Expose-Headers", "x-total-count");
+
   console.log(req.query);
 
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Not implemented yet");
+  return res.status(StatusCodes.OK).json([
+    {
+      id: 1, 
+      nome: "Caralha do sul", 
+      estado: "parana"
+    },
+    {
+      id: 2, 
+      nome: "Caralha do norte", 
+      estado: "parana"
+    }
+  ]);
 };

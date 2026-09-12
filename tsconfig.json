@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "ignoreDeprecations": "6.0",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "rootDir": "src",
+    "outDir": "build",
     "esModuleInterop": true,
     "strict": true,
     "types": [
@@ -12,12 +13,11 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
+    "build",
     "jest.config.ts"
   ]
 }
