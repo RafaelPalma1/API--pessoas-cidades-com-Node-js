@@ -1,8 +1,8 @@
-import type { Request, Response } from "express";
-import * as yup from "yup";
+import type { Request, Response } from 'express';
+import * as yup from 'yup';
 
-import { validation } from "../../shared/middleware";
-import { StatusCodes } from "http-status-codes";
+import { validation } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 
 interface IParamsProps {
@@ -20,8 +20,8 @@ export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
   console.log(req.params);
 
   if (Number(req.params.id) === 99999) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: "Registro não encontrado" });
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: 'Registro não encontrado' });
   }
 
-  return res.status(StatusCodes.NO_CONTENT).send("Not implemented yet");
+  return res.status(StatusCodes.NO_CONTENT).send('Not implemented yet');
 };

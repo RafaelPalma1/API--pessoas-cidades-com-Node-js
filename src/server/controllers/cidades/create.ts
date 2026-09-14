@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-import type { Request, Response } from "express";
-import * as yup from "yup";
+import type { Request, Response } from 'express';
+import * as yup from 'yup';
 
-import { validation } from "../../shared/middleware";
-import { StatusCodes } from "http-status-codes";
+import { validation } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 
 interface ICidade {

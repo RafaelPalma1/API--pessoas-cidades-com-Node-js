@@ -1,6 +1,6 @@
-import "./shared/services/translationsYup";
-import express from "express";
-import { router } from "./routes/index";
+import './shared/services/translationsYup';
+import express from 'express';
+import { router } from './routes/index';
 
 
 const server = express();

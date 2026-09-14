@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-import type { Request, Response } from "express";
-import * as yup from "yup";
+import type { Request, Response } from 'express';
+import * as yup from 'yup';
 
-import { validation } from "../../shared/middleware";
-import { StatusCodes } from "http-status-codes";
+import { validation } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 
 interface IParamsProps {
@@ -28,12 +28,12 @@ export const updateByIdValidation = validation((getSchema) => ({
 export const updateById = async (req: Request<IParamsProps, {}, IbodyProps>, res: Response) => {
 
   if (Number(req.params.id) === 99999) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: "Registro não encontrado" });
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: 'Registro não encontrado' });
   };
 
   console.log(req.params);
   console.log(req.body);
 
 
-  return res.status(StatusCodes.OK).send("Not implemented yet");
+  return res.status(StatusCodes.OK).send('Not implemented yet');
 };

@@ -1,10 +1,10 @@
-import type { RequestHandler } from "express";
-import { StatusCodes } from "http-status-codes";
-import type { ObjectSchema, ValidationError } from "yup";
+import type { RequestHandler } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import type { ObjectSchema, ValidationError } from 'yup';
 
 
 
-type TProperty = "body" | "headers" | "params" | "query";
+type TProperty = 'body' | 'headers' | 'params' | 'query';
 
 type TGetSchema = <T extends object>(schema: ObjectSchema<T>) => ObjectSchema<T>;
 

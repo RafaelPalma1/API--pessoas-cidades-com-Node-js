@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-import type { Request, Response } from "express";
-import * as yup from "yup";
+import type { Request, Response } from 'express';
+import * as yup from 'yup';
 
-import { validation } from "../../shared/middleware";
-import { StatusCodes } from "http-status-codes";
+import { validation } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 
 interface IqueryProps {
@@ -23,8 +23,8 @@ export const getAllValidation = validation((getSchema) => ({
 
 export const getAll = async (req: Request<{}, {}, {}, IqueryProps>, res: Response) => {
 
-  res.setHeader("x-total-count", 1);
-  res.setHeader("Access-Control-Expose-Headers", "x-total-count");
+  res.setHeader('x-total-count', 1);
+  res.setHeader('Access-Control-Expose-Headers', 'x-total-count');
 
   console.log(req.query);
 
@@ -32,13 +32,13 @@ export const getAll = async (req: Request<{}, {}, {}, IqueryProps>, res: Respons
   return res.status(StatusCodes.OK).json([
     {
       id: 1, 
-      nome: "Caralha do sul", 
-      estado: "parana"
+      nome: 'Caralha do sul', 
+      estado: 'parana'
     },
     {
       id: 2, 
-      nome: "Caralha do norte", 
-      estado: "parana"
+      nome: 'Caralha do norte', 
+      estado: 'parana'
     }
   ]);
 };

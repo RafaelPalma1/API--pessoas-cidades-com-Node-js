@@ -9,13 +9,19 @@
     "test": "jest --runInBand",
     "dev": "tsx --env-file=.env src/index.ts",
     "postinstall": "tsc",
-    "start": "node --env-file=.env build/index.js"
+    "start": "node --env-file=.env build/index.js",
+    "knex:migrate": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:latest",
+    "knex:rollback": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback",
+    "knex:rollback-all": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback --all",
+    "knex:seed": "knex --knexfile ./src/server/database/knex/Environment.ts seed:run"
   },
   "dependencies": {
+    "better-sqlite3": "^13.0.3",
     "dotenv": "^17.4.2",
     "esbuild": "^0.28.2",
     "express": "^5.2.1",
     "http-status-codes": "^2.3.0",
+    "knex": "^3.3.0",
     "yup": "^1.7.1"
   },
   "devDependencies": {

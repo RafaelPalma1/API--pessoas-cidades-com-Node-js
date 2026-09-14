@@ -1,24 +1,24 @@
-import { Router } from "express";
-import { StatusCodes } from "http-status-codes";
-import { CidadesController } from "../controllers";
+import { Router } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import { CidadesController } from '../controllers';
 
 const router = Router();
 
 
-router.get("/", (req, res) => {
-    return res.status(StatusCodes.CREATED).json("hello world");
+router.get('/', (req, res) => {
+    return res.status(StatusCodes.CREATED).json('hello world');
 });
 
 
-router.post("/cidades", CidadesController.createValidation, CidadesController.create);
+router.post('/cidades', CidadesController.createValidation, CidadesController.create);
 
-router.get("/cidades", CidadesController.getAllValidation, CidadesController.getAll);
+router.get('/cidades', CidadesController.getAllValidation, CidadesController.getAll);
 
-router.get("/cidades/:id", CidadesController.getByIdValidation, CidadesController.getById);
+router.get('/cidades/:id', CidadesController.getByIdValidation, CidadesController.getById);
 
-router.put("/cidades/:id", CidadesController.updateByIdValidation, CidadesController.updateById);
+router.put('/cidades/:id', CidadesController.updateByIdValidation, CidadesController.updateById);
 
-router.delete("/cidades/:id", CidadesController.deleteByIdValidation, CidadesController.deleteById);
+router.delete('/cidades/:id', CidadesController.deleteByIdValidation, CidadesController.deleteById);
 
 
 
