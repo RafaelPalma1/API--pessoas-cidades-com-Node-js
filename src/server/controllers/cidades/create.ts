@@ -4,22 +4,20 @@ import * as yup from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
+import { Icidade } from '../../database/models';
 
 
-interface ICidade {
-  nome: string;
-  estado: string;
-}
+
+interface IBodyProps extends Omit<Icidade, 'id'> {}
 
 export const createValidation = validation((getSchema) => ({
-  body: getSchema<ICidade>(yup.object().shape({
+  body: getSchema<IBodyProps>(yup.object().shape({
     nome: yup.string().required().min(3),
     estado: yup.string().required().min(3),
   })),
 }));
 
-export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
-  console.log(req.body);
+export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
 
 
   return res.status(StatusCodes.CREATED).json(1);

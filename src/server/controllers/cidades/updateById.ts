@@ -4,15 +4,14 @@ import * as yup from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
+import { Icidade } from '../../database/models';
 
 
 interface IParamsProps {
     id?: number;
 }
 
-interface IbodyProps {
-    nome: string;
-}
+interface IbodyProps extends Omit<Icidade, 'id'> {}
 
 export const updateByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamsProps>(yup.object().shape({
@@ -22,10 +21,12 @@ export const updateByIdValidation = validation((getSchema) => ({
 
   body: getSchema<IbodyProps>(yup.object().shape({
     nome: yup.string().required().min(3).max(100),
+    estado: yup.string().required().min(3).max(100),
 }))
 }));
 
 export const updateById = async (req: Request<IParamsProps, {}, IbodyProps>, res: Response) => {
+
 
   if (Number(req.params.id) === 99999) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: 'Registro não encontrado' });
@@ -35,5 +36,5 @@ export const updateById = async (req: Request<IParamsProps, {}, IbodyProps>, res
   console.log(req.body);
 
 
-  return res.status(StatusCodes.OK).send('Not implemented yet');
+  return res.status(StatusCodes.OK).json(1);
 };

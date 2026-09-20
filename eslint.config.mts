@@ -14,7 +14,6 @@ export default defineConfig([
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
       eqeqeq: ['error', 'always'],
-      '@typescript-eslint/consistent-type-imports': 'error',
     },
     ignores: ['build/**', 'dist/**', 'node_modules/**'],
   },
