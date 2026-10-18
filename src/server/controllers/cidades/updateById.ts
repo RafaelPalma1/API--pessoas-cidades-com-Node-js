@@ -4,14 +4,14 @@ import * as yup from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
-import { Icidade } from '../../database/models';
+import { ICidade } from '../../database/models';
 
 
 interface IParamsProps {
     id?: number;
 }
 
-interface IbodyProps extends Omit<Icidade, 'id'> {}
+interface IbodyProps extends Omit<ICidade, 'id'> {}
 
 export const updateByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamsProps>(yup.object().shape({

@@ -30,5 +30,9 @@ export const getAll = async (req: Request<{}, {}, {}, IqueryProps>, res: Respons
 
   console.log(req.query);
 
-  return res.status(StatusCodes.OK).json(1);
+  return res.status(StatusCodes.OK).json([{
+    id: 1,
+    nome: 'São Paulo',
+    estado: 'São Paulo',
+  }]);
 };

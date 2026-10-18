@@ -30,5 +30,9 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
   console.log(req.params);
 
 
-  return res.status(StatusCodes.OK).json(1);
+  return res.status(StatusCodes.OK).json({
+    id: 1,
+    nome: 'São Paulo',
+    estado: 'São Paulo',
+  });
 };
