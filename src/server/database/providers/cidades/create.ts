@@ -8,7 +8,7 @@ export const create = async (cidade: Omit<ICidade, 'id'>): Promise<number | Erro
         const [result] = await Knex(ETableNames.cidade).insert(cidade).returning('id');
         
         if(typeof result === 'object'){
-            return result.id;
+            return Number(result.id);
         }
         else if (typeof result === 'number'){
             return result;
