@@ -3,6 +3,7 @@ import * as yup from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
+import { CidadesProvider } from '../../database/providers/cidades';
 
 
 interface IParamsProps {
@@ -19,10 +20,12 @@ export const deleteByIdValidation = validation((getSchema) => ({
 export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
   console.log(req.params);
 
+  const result = await  CidadesProvider.deleteById(Number(req.params.id));
 
-  if (Number(req.params.id) === 99999) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: 'Registro não encontrado' });
+
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: result.message });
   }
 
-  return res.status(StatusCodes.NO_CONTENT).json(1);
+  return res.status(StatusCodes.NO_CONTENT).send();
 };

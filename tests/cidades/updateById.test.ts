@@ -17,8 +17,6 @@ describe('cidades - updateById', () => {
         });
         
         expect(res1.statusCode).toEqual(StatusCodes.OK);
-        expect(typeof res1.body).toEqual('number');
-        expect(res1.body).toEqual(1);
     });
 
     it('Tenta passar um ID inválido', async () => {

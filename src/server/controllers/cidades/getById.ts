@@ -4,6 +4,7 @@ import * as yup from 'yup';
 
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
+import { CidadesProvider } from '../../database/providers/cidades';
 
 
 interface IParamsProps {
@@ -22,17 +23,15 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
   res.setHeader('x-total-count', 1);
   res.setHeader('Access-Control-Expose-Headers', 'x-total-count');
 
-  if (Number(req.params.id) === 99999) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: 'Registro não encontrado' });
+  const result = await  CidadesProvider.getById(Number(req.params.id));
+
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ default: result.message });
   }
 
 
   console.log(req.params);
 
 
-  return res.status(StatusCodes.OK).json({
-    id: 1,
-    nome: 'São Paulo',
-    estado: 'São Paulo',
-  });
+  return res.status(StatusCodes.OK).json(result);
 };
